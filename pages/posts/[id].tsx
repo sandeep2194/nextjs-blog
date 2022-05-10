@@ -7,7 +7,7 @@ import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next';
 
 
 export const getStaticProps:GetStaticProps = async ({ params }) => {
-    const postData = await getPostData(params.id);
+    const postData = await getPostData(params.id as string);
     return {
         props: {
             postData,
@@ -21,7 +21,7 @@ export const getStaticPaths:GetStaticPaths = ()=> {
         fallback: false,
     };
 }
-export default function Post({ postData }) {
+export default function Post({ postData }: { postData: { id: string; title: string; date: string; contentHtml: string } }) {
     return (
         <Layout>
             <Head>
