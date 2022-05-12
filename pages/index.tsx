@@ -5,6 +5,7 @@ import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date'
 import {GetStaticProps} from "next";
+import {Counter} from "../features/counter/Counter";
 
 export const getStaticProps:GetStaticProps = async () => {
     const allPostsData = getSortedPostsData();
@@ -42,6 +43,9 @@ export default function Home({ allPostsData }) {
                       </li>
                   ))}
               </ul>
+          </section>
+          <section>
+              <Counter />
           </section>
       </Layout>
   );
